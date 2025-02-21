@@ -49,7 +49,10 @@ react {
     //
     //   The list of flags to pass to the Hermes compiler. By default is "-O", "-output-source-map"
     // hermesFlags = ["-O", "-output-source-map"]
-
+    project.ext.vectorIcons = [
+        iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf', 'MaterialCommunityIcons.ttf', 'Ionicons.ttf', 'FontAwesome.ttf', 'AntDesign.ttf' ]  //Name of the font files you want to copy
+    ]
+    apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
     /* Autolinking */
     autolinkLibrariesWithApp()
 }
@@ -110,6 +113,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+    // implementation project(':react-native-vector-icons')
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
