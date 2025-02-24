@@ -13,13 +13,14 @@
     "create-apk": "cd android && ./gradlew assembleRelease"
   },
   "dependencies": {
+    "@react-native/gradle-plugin": "^0.78.0",
     "lottie-react-native": "^7.2.2",
     "react": "18.3.1",
-    "react-native": "0.76.5",
-    "react-native-reanimated": "3.16.6",
+    "react-native": "0.77.1",
+    "react-native-reanimated": "3.16.7",
     "react-native-svg": "^15.11.1",
     "react-native-svg-transformer": "^1.5.0",
-    "react-native-vector-icons": "^10.2.0"
+    "react-native-vector-icons": "10.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
