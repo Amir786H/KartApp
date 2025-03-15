@@ -7,7 +7,7 @@ const Splash: FC = () => {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      resetAndNavigate("Home");
+      resetAndNavigate("MainNavigator");
     }, 2000)
 
     return () => clearTimeout(timeoutId);
