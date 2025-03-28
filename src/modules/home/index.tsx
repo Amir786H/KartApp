@@ -6,6 +6,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import Animated, { Extrapolate, interpolate, useAnimatedStyle, useSharedValue } from 'react-native-reanimated';
 import { screenHeight, screenWidth } from '@utils/Constants';
 import MenuHeader from './molecules/MenuHeader';
+import SearchBar from './molecules/SearchBar';
+import MainList from './templates/MainList';
 
 
 const Home = () => {
@@ -44,11 +46,12 @@ const Home = () => {
       <Animated.View style={[moveUpStyle]}>
         <View>
           <MenuHeader scrollY={scrollYGlobal} />
+          <SearchBar />
         </View>
       </Animated.View>
 
       <Animated.View style={[moveUpStyle, { height: screenHeight }]}>
-
+        <MainList scrollYGlobal={scrollYGlobal}/>
       </Animated.View>
 
     </View>
