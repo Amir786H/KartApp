@@ -4,11 +4,13 @@ import { dynamicDashboardData as fullData } from '@utils/db'
 import AdCarousel from '../organisms/AdCarousel';
 import Categories from '../organisms/Categories';
 import Sponser from '../organisms/Sponser';
+import VerticalList from '../organisms/VerticalList';
 
 const sectionComponents: { [key: string]: React.ComponentType<any> } = {
   ad_carousal: AdCarousel,
   categories: Categories,
-  sponser: Sponser
+  sponser: Sponser,
+  vertical_list: VerticalList,
 }
 const PAGE_SIZE = 4;
 
@@ -75,7 +77,7 @@ const MainList: FC<{ scrollYGlobal: any }> = ({ scrollYGlobal }) => {
       onEndReachedThreshold={0.5}
       nestedScrollEnabled={true}
       contentContainerStyle={{
-        paddingBottom: Platform.OS === 'android' ? 200 : 300,
+        paddingBottom: Platform.OS === 'android' ? 400 : 300,
       }}
       showsVerticalScrollIndicator={false}
       keyExtractor={(item, index) => index.toString()}
