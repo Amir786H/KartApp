@@ -4,16 +4,17 @@ import { useAppDispatch, useAppSelector } from '@store/reduxHook'
 import { getCategories } from './api/actions'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { FONTS } from '@utils/Constants'
+import { navigate } from '@navigation/NavigationUtil'
 
 const Categories: FC = () => {
 
   const dispatch = useAppDispatch()
-  const {data, loading, error} = useAppSelector(state => state.categories)
+  const { data, loading, error } = useAppSelector(state => state.categories)
 
   useEffect(() => {
     dispatch(getCategories())
   }, [])
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
@@ -27,51 +28,61 @@ const Categories: FC = () => {
 
       {
         loading ? <ActivityIndicator size="small" color="black" /> :
-        <FlatList 
-         data={data}
-         numColumns={2}
-         keyExtractor={(item) => item._id.toString()}
-         renderItem={({item}) => (
-           <TouchableOpacity style={styles.itemContainer}>
-              <Image source={{uri: item?.image_uri}} style={styles.image} />
-              <Text style={styles.name}>{item?.name}</Text>  
-           </TouchableOpacity>
-         )}
-         showsVerticalScrollIndicator={false}
-         contentContainerStyle={styles.contentContainer}
-        /> 
+          <FlatList
+            data={data}
+            numColumns={2}
+            keyExtractor={(item) => item._id.toString()}
+            renderItem={({ item }) => (
+              <TouchableOpacity style={styles.itemContainer}
+                onPress={() => navigate('Products', {
+                  id: item._id,
+                  name: item.name
+                })}
+              >
+                <Image source={{ uri: item?.image_uri }} style={styles.image} />
+                <Text style={styles.name}>{item?.name}</Text>
+              </TouchableOpacity>
+            )}
+            ListFooterComponent={<>
+              {
+                error && <Text style={styles.subTitle}>There was an error</Text>
+              }
+            </>}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={styles.contentContainer}
+          />
       }
     </View>
   )
 }
- const styles = StyleSheet.create({
-   container: {
+const styles = StyleSheet.create({
+  container: {
     flex: 1,
     backgroundColor: '#E7F9EC'
-   },
-   contentContainer: {
+  },
+  contentContainer: {
     padding: 10
-   },
-   headerContainer: {
+  },
+  headerContainer: {
     padding: 20,
     backgroundColor: '#fff',
     alignItems: 'flex-start',
     marginBottom: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
-   },
-   title: {
+  },
+  title: {
     fontSize: RFValue(18),
     fontFamily: FONTS.heading,
     fontWeight: "bold",
     color: "#333"
-   },
-   subTitle: {
+  },
+  subTitle: {
     fontSize: RFValue(13),
     color: "#666",
     marginTop: 5
-   },
-   itemContainer: {
+  },
+  itemContainer: {
     flex: 1,
     margin: 5,
     alignItems: 'center',
@@ -86,19 +97,19 @@ const Categories: FC = () => {
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
-   },
-   image: {
+  },
+  image: {
     width: 80,
     height: 80,
     borderRadius: 10,
-   },
-   name: {
+  },
+  name: {
     marginTop: 10,
     fontSize: RFValue(12),
     fontWeight: '500',
     color: '#333',
-   }
+  }
 
- })
+})
 
 export default Categories
