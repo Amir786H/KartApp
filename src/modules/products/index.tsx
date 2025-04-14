@@ -26,8 +26,8 @@ const Products: FC = () => {
     return (
         <View style={styles.container}>
             <SafeAreaView />
-            <SearchBar />
-
+            <SearchBar cartLength={2} />
+            
         </View>
     )
 }

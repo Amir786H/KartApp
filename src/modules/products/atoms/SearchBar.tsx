@@ -1,16 +1,43 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Pressable, TextInput } from 'react-native'
 import React, { FC } from 'react'
+import Icon from '@components/atoms/Icon';
+import { goBack } from '@navigation/NavigationUtil';
 
 interface SearchBarProps {
     cartLength: number;
 }
 
-const SearchBar:FC<SearchBarProps> = ({cartLength}) => {
-  return (
-    <View style={styles.container}>
-      <Text>SearchBar</Text>
-    </View>
-  )
+const SearchBar: FC<SearchBarProps> = ({ cartLength }) => {
+    return (
+        <View style={styles.container}>
+            <Pressable onPress={() => goBack()}>
+                <Icon name="arrow-left" iconFamily='MaterialCommunityIcons' size={30} color="#000" />
+            </Pressable>
+
+            <View style={styles.searchContainer}>
+                <Icon name="search" iconFamily='MaterialIcons' size={20} color="#000" />
+                <TextInput
+                    placeholder="Search Products"
+                    placeholderTextColor="#666"
+                    style={styles.searchInput}
+                />
+            </View>
+
+            <Icon name='heart-outline' iconFamily='Ionicons' color='#000' size={24} />
+
+            <Pressable style={styles.cartContainer} onPress={() => { }}>
+                <Icon name='cart-sharp' iconFamily='Ionicons' color='#000' size={24} />
+                {cartLength > 0 &&
+                    <View style={styles.badge}>
+                        <Text style={styles.badgeText}>
+                            {cartLength}
+                        </Text>
+                    </View>
+                }
+            </Pressable>
+
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
