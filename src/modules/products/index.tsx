@@ -5,6 +5,7 @@ import { getProductsByCategory } from './api/getProducts'
 import { screenHeight } from '@utils/Constants'
 import { RFValue } from 'react-native-responsive-fontsize'
 import SearchBar from './atoms/SearchBar'
+import ProductItem from './atoms/ProductItem'
 
 const Products: FC = () => {
 
@@ -23,11 +24,33 @@ const Products: FC = () => {
         }
     }, [category?.id])
 
+
+    const renderItem = ({ item, index }: any) => {
+        const isOdd = index % 2 !== 0 
+        return (
+            <ProductItem />
+        )
+    }
+
     return (
         <View style={styles.container}>
             <SafeAreaView />
             <SearchBar cartLength={2} />
-            
+            <FlatList
+                bounces={false}
+                data={products}
+                renderItem={renderItem}
+                keyExtractor={(item) => item._id.toString()}
+                numColumns={2}
+                ListEmptyComponent={
+                    <View style={styles.emptyContainer}>
+                        <Text style={styles.emptyText}>
+                            Oops! No items in this category
+                        </Text>
+                    </View>
+                }
+                contentContainerStyle={styles.listContainer}
+            />
         </View>
     )
 }

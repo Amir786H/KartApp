@@ -15,6 +15,8 @@ const Sponser: FC<{ data: any }> = ({ data }) => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 15,
+    // marginVertical: 15,
+    top: 10,
     height: 80,
     width: screenWidth - 30,
     justifyContent: 'center',
