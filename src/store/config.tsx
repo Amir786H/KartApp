@@ -7,4 +7,5 @@ import { Platform } from "react-native";
 
 //FOR PHYSICAL DEVICE
 //USE YOUR NETWORK IP ADDRESS OR HOSTED URL
-export const BASE_URL = 'http://192.168.29.238:3000';
+// export const BASE_URL = 'http://192.168.29.238:3000';
+export const BASE_URL = 'http://192.168.43.90:3000';  //This is open when using WIFI HOTSPOT from Mobile(Snipper)
