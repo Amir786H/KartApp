@@ -3,6 +3,7 @@ import React from 'react'
 import { navigate } from '@navigation/NavigationUtil'
 import Icon from '@components/atoms/Icon'
 import { RFValue } from 'react-native-responsive-fontsize'
+import UniversalAdd from './UniversalAdd'
 
 const ProductItem = ({ item, isOdd }: any) => {
   return (
@@ -34,6 +35,8 @@ const ProductItem = ({ item, isOdd }: any) => {
             <Text style={styles.hotDealText}>Hot Deal</Text>
           </View>
         </View>
+
+        <UniversalAdd item={item} />
 
       </View>
     </View>
