@@ -1,5 +1,6 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
+import { Alert } from "react-native";
 
 interface CartItem {
     _id: string;
@@ -43,7 +44,7 @@ export const cartSlice = createSlice({
             const newItem = action.payload;
             const existingItem = state.items.find(item => item._id === newItem._id);
             if (existingItem) {
-                if (existingItem.quantity > 1) {
+                if (existingItem.quantity >= 1) {
                     existingItem.quantity -= 1;
                     existingItem.totalPrice -= existingItem.price
                 }
