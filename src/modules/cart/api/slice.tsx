@@ -1,6 +1,5 @@
 import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@store/store";
-import { Alert } from "react-native";
 
 interface CartItem {
     _id: string;
@@ -68,10 +67,10 @@ export const selectItemCountById = (id: string) =>
     })
 
 export const selectTotalItemsInCart = createSelector(selectCartItems, (items) => {
-    return items.reduce((total, item) => total + item.quantity, 0);
+    return items?.reduce((total, item) => total + item.quantity, 0);
 })
 
-export const selectTotalPrice = createSelector(selectCartItems, (items) => {
+export const selectTotalCartPrice = createSelector(selectCartItems, (items) => {
     return items?.reduce((total, item) => total + item.totalPrice, 0);
 })
 

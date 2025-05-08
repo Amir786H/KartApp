@@ -21,7 +21,7 @@ const Cart = () => {
       <View style={styles.container}>
         <Text style={styles.heading}>My Cart</Text>
         <Text style={styles.number}>🗺️ </Text>
-        <Text style={styles.address}>Delicer to: Login first to place your order </Text>
+        <Text style={styles.address}>Deliver to: Login first to place your order</Text>
       </View>
 
       {carts.length > 0 ? (
